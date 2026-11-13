@@ -13,5 +13,4 @@ document.addEventListener("DOMContentLoaded",()=>{
  }
  const cv=document.getElementById("cv-form");
  if(cv)cv.addEventListener("submit",e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();const safe=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const sections=[["Professional Summary",v("summary")],["Education",v("education")],["Work Experience",v("experience")],["Skills",v("skills")]];const out=document.getElementById("cv-preview");out.innerHTML="<h1>"+safe(v("name"))+"</h1><p style='text-align:center'>"+[v("email"),v("phone"),v("city")].filter(Boolean).map(safe).join(" | ")+"</p>"+sections.filter(x=>x[1]).map(x=>"<h3>"+x[0]+"</h3><p>"+safe(x[1])+"</p>").join("");out.style.display="block";out.scrollIntoView({behavior:"smooth"});});
- const contact=document.getElementById("contact-form");if(contact)contact.addEventListener("submit",e=>{e.preventDefault();const msg=document.getElementById("contact-message");msg.textContent="Thank you. This demonstration form does not send messages yet. The site owner must connect an email or form service.";});
 });
