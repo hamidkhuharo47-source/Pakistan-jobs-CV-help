@@ -27,20 +27,74 @@ jobs:
           import json
 
           root = ET.parse("feed.xml").getroot()
+
+          def local_name(tag):
+              return tag.split("}")[-1].lower()
+
+          def get_text(element, names):
+              for child in element.iter():
+                  if local_name(child.tag) in names:
+                      text = "".join(child.itertext()).strip()
+                      if text:
+                          return text
+              return ""
+
           jobs = []
 
-          for item in root.findall(".//item"):
-              jobs.append({
-                  "title": item.findtext("title", "").strip(),
-                  "link": item.findtext("link", "").strip(),
-                  "published": item.findtext("pubDate", "").strip(),
-                  "description": item.findtext("description", "").strip()
-              })
+          entries = [
+              element for element in root.iter()
+              if local_name(element.tag) in ("item", "entry")
+          ]
+
+          if not entries:
+              entries = [
+                  element for element in root.iter()
+                  if get_text(element, {"title"})
+                  and any(
+                      local_name(child.tag) == "link"
+                      or child.attrib.get("href")
+                      for child in element
+                  )
+              ]
+
+          for item in entries:
+              title = get_text(item, {"title"})
+
+              link = ""
+              for child in item.iter():
+                  if local_name(child.tag) == "link":
+                      link = (
+                          child.attrib.get("href", "")
+                          or "".join(child.itertext()).strip()
+                      )
+                      if link:
+                          break
+
+              published = get_text(
+                  item, {"pubdate", "published", "updated"}
+              )
+
+              description = get_text(
+                  item, {"description", "summary", "content"}
+              )
+
+              if title and link:
+                  jobs.append({
+                      "title": title,
+                      "link": link,
+                      "published": published,
+                      "description": description
+                  })
 
           with open("test_jobs.json", "w", encoding="utf-8") as f:
               json.dump(jobs, f, ensure_ascii=False, indent=2)
 
           print(f"Extracted {len(jobs)} feed items")
+
+          for job in jobs[:5]:
+              print("JOB:", job["title"])
+              print("LINK:", job["link"])
+
           PY
 
       - name: Save test results
