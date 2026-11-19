@@ -7,24 +7,28 @@ on:
     - cron: "0 2 * * *"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   rss-test:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download Pakistan jobs RSS feed
         run: |
           curl -L --fail --silent --show-error \
             "https://www.careermidway.com/rss/pakistan.xml" \
             -o feed.xml
 
-      - name: Extract job information
+      - name: Extract jobs and update database
         run: |
           python - <<'PY'
           import xml.etree.ElementTree as ET
           import json
+          from datetime import date, timedelta
 
           root = ET.parse("feed.xml").getroot()
 
@@ -34,33 +38,22 @@ jobs:
           def get_text(element, names):
               for child in element.iter():
                   if local_name(child.tag) in names:
-                      text = "".join(child.itertext()).strip()
-                      if text:
-                          return text
+                      value = "".join(child.itertext()).strip()
+                      if value:
+                          return value
               return ""
-
-          jobs = []
 
           entries = [
               element for element in root.iter()
               if local_name(element.tag) in ("item", "entry")
           ]
 
-          if not entries:
-              entries = [
-                  element for element in root.iter()
-                  if get_text(element, {"title"})
-                  and any(
-                      local_name(child.tag) == "link"
-                      or child.attrib.get("href")
-                      for child in element
-                  )
-              ]
+          jobs = []
 
           for item in entries:
               title = get_text(item, {"title"})
-
               link = ""
+
               for child in item.iter():
                   if local_name(child.tag) == "link":
                       link = (
@@ -73,7 +66,6 @@ jobs:
               published = get_text(
                   item, {"pubdate", "published", "updated"}
               )
-
               description = get_text(
                   item, {"description", "summary", "content"}
               )
@@ -86,16 +78,91 @@ jobs:
                       "description": description
                   })
 
+          today = date.today()
+          review_date = today - timedelta(days=30)
+
+          try:
+              with open("jobs-database.json", encoding="utf-8") as f:
+                  database = json.load(f)
+          except (FileNotFoundError, json.JSONDecodeError):
+              database = {"jobs": []}
+
+          if not isinstance(database.get("jobs"), list):
+              database = {"jobs": []}
+
+          existing = {
+              job.get("link"): job
+              for job in database["jobs"]
+              if job.get("link")
+          }
+
+          added = 0
+
+          for job in jobs:
+              link = job["link"]
+
+              if link in existing:
+                  record = existing[link]
+                  record["title"] = job["title"]
+                  record["description"] = job["description"]
+                  record["last_seen"] = today.isoformat()
+              else:
+                  first_seen = today
+                  record = {
+                      **job,
+                      "first_seen": first_seen.isoformat(),
+                      "last_seen": today.isoformat(),
+                      "review_after": (
+                          first_seen + timedelta(days=30)
+                      ).isoformat(),
+                      "status": "Active"
+                  }
+                  database["jobs"].append(record)
+                  existing[link] = record
+                  added += 1
+
+          needs_review = 0
+
+          for record in database["jobs"]:
+              first_seen_text = record.get("first_seen")
+              if not first_seen_text:
+                  continue
+
+              first_seen = date.fromisoformat(first_seen_text)
+
+              if today - first_seen >= timedelta(days=30):
+                  record["status"] = "Needs Review"
+              elif not record.get("status"):
+                  record["status"] = "Active"
+
+              if record.get("status") == "Needs Review":
+                  needs_review += 1
+
+          with open("jobs-database.json", "w", encoding="utf-8") as f:
+              json.dump(database, f, ensure_ascii=False, indent=2)
+
           with open("test_jobs.json", "w", encoding="utf-8") as f:
               json.dump(jobs, f, ensure_ascii=False, indent=2)
 
-          print(f"Extracted {len(jobs)} feed items")
+          print(f"Feed listings found: {len(jobs)}")
+          print(f"New jobs added to database: {added}")
+          print(f"Total jobs in database: {len(database['jobs'])}")
+          print(f"Jobs needing review: {needs_review}")
 
           for job in jobs[:5]:
               print("JOB:", job["title"])
               print("LINK:", job["link"])
-
           PY
+
+      - name: Save database to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jobs-database.json
+          git diff --cached --quiet || (
+            git commit -m "Update automatic jobs database" &&
+            git push
+          )
 
       - name: Save test results
         uses: actions/upload-artifact@v4
