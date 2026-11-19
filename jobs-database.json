@@ -8,7 +8,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Private",
+      "category_note": "Review recommended"
     },
     {
       "title": "Commandant (Sohawa)",
@@ -18,7 +20,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Internal Auditor (Sohawa)",
@@ -28,7 +32,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Stock Controller - Liquid Cargoes (Sohawa)",
@@ -38,7 +44,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Demonstrator, Associate/Assistant Professors, Lecturer, Technicians, Lab Attendants, Assistant Registrar, Admin Coordinators, Computer Operators, System Support Engineers and others (Malir)",
@@ -48,7 +56,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Law Officer and Section Officer (Malir)",
@@ -58,7 +68,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Marketing/ Export Promotion Officer - Salt Business (Islamabad)",
@@ -68,7 +80,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Government",
+      "category_note": "Review recommended"
     },
     {
       "title": "Associate (Electrical) (Islamabad)",
@@ -78,7 +92,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Government",
+      "category_note": "Review recommended"
     },
     {
       "title": "Maintenance Lead/Sr. Associate (Islamabad)",
@@ -88,7 +104,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Government",
+      "category_note": "Review recommended"
     },
     {
       "title": "Manager Finance (Peshawar)",
@@ -98,7 +116,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Banking",
+      "category_note": "Review recommended"
     },
     {
       "title": "Head of Internal Audit (Islamabad)",
@@ -108,7 +128,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Internal Auditor (Karachi)",
@@ -118,7 +140,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Principal (Karachi)",
@@ -128,7 +152,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Assistant Manager - Water Supply (Islamabad)",
@@ -138,7 +164,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Senior HR Manager/Lead: Strategic HR and Assistant Manager / HR Generalist (Islamabad)",
@@ -148,7 +176,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Manager-Utility/ HOA Billing & Collections (Islamabad)",
@@ -158,7 +188,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Barrister-Legal Assistance & Liaison (Islamabad)",
@@ -168,7 +200,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Senior/Lead Civil Engineer - Housing & Urban Development (Islamabad)",
@@ -178,7 +212,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Executive Coordination & Special Matters Officer (Islamabad)",
@@ -188,7 +224,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Chief Executive Officer (CEO) (Islamabad)",
@@ -198,7 +236,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Chief Financial Officer (CFO) (Islamabad)",
@@ -208,7 +248,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Banking",
+      "category_note": "Review recommended"
     },
     {
       "title": "Club Secretary (Karachi)",
@@ -218,7 +260,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Manager Electrical (Karachi)",
@@ -228,7 +272,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     },
     {
       "title": "Head Compliance (Islamabad)",
@@ -238,7 +284,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Banking",
+      "category_note": "Review recommended"
     },
     {
       "title": "Accountant and Assistant Accountant (Islamabad)",
@@ -248,7 +296,9 @@
       "first_seen": "2026-11-19",
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
-      "status": "Active"
+      "status": "Active",
+      "category": "Needs Verification",
+      "category_note": "Uncertain"
     }
   ]
 }
