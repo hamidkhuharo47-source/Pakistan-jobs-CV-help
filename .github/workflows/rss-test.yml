@@ -78,8 +78,48 @@ jobs:
                       "description": description
                   })
 
+          def classify(job):
+              text = (
+                  job["title"] + " " + job["description"]
+              ).lower()
+
+              banking_terms = [
+                  "bank", "banking", "microfinance bank"
+              ]
+
+              government_terms = [
+                  "government of pakistan",
+                  "government of punjab",
+                  "government of sindh",
+                  "government of kpk",
+                  "government of balochistan",
+                  "ministry of",
+                  "federal government",
+                  "provincial government",
+                  "public service commission",
+                  "fpsc", "ppsc", "spsc", "kppsc",
+                  "government department"
+              ]
+
+              private_terms = [
+                  "private limited", "pvt. ltd",
+                  "pvt ltd", "limited company",
+                  "listed company", "oilfields limited",
+                  "private company"
+              ]
+
+              if any(term in text for term in banking_terms):
+                  return "Banking", "Review recommended"
+
+              if any(term in text for term in government_terms):
+                  return "Government", "Review recommended"
+
+              if any(term in text for term in private_terms):
+                  return "Private", "Review recommended"
+
+              return "Needs Verification", "Uncertain"
+
           today = date.today()
-          review_date = today - timedelta(days=30)
 
           try:
               with open("jobs-database.json", encoding="utf-8") as f:
@@ -99,21 +139,19 @@ jobs:
           added = 0
 
           for job in jobs:
+              category, category_note = classify(job)
               link = job["link"]
 
               if link in existing:
                   record = existing[link]
-                  record["title"] = job["title"]
-                  record["description"] = job["description"]
-                  record["last_seen"] = today.isoformat()
+                  record.update(job)
               else:
-                  first_seen = today
                   record = {
                       **job,
-                      "first_seen": first_seen.isoformat(),
+                      "first_seen": today.isoformat(),
                       "last_seen": today.isoformat(),
                       "review_after": (
-                          first_seen + timedelta(days=30)
+                          today + timedelta(days=30)
                       ).isoformat(),
                       "status": "Active"
                   }
@@ -121,19 +159,22 @@ jobs:
                   existing[link] = record
                   added += 1
 
+              record["category"] = category
+              record["category_note"] = category_note
+              record["last_seen"] = today.isoformat()
+
           needs_review = 0
 
           for record in database["jobs"]:
               first_seen_text = record.get("first_seen")
-              if not first_seen_text:
-                  continue
 
-              first_seen = date.fromisoformat(first_seen_text)
+              if first_seen_text:
+                  first_seen = date.fromisoformat(first_seen_text)
 
-              if today - first_seen >= timedelta(days=30):
-                  record["status"] = "Needs Review"
-              elif not record.get("status"):
-                  record["status"] = "Active"
+                  if today - first_seen >= timedelta(days=30):
+                      record["status"] = "Needs Review"
+                  elif not record.get("status"):
+                      record["status"] = "Active"
 
               if record.get("status") == "Needs Review":
                   needs_review += 1
@@ -145,13 +186,20 @@ jobs:
               json.dump(jobs, f, ensure_ascii=False, indent=2)
 
           print(f"Feed listings found: {len(jobs)}")
-          print(f"New jobs added to database: {added}")
+          print(f"New jobs added: {added}")
           print(f"Total jobs in database: {len(database['jobs'])}")
           print(f"Jobs needing review: {needs_review}")
 
-          for job in jobs[:5]:
-              print("JOB:", job["title"])
-              print("LINK:", job["link"])
+          for category in [
+              "Government", "Banking", "Private",
+              "Needs Verification"
+          ]:
+              count = sum(
+                  1 for record in database["jobs"]
+                  if record.get("category") == category
+              )
+              print(f"{category}: {count}")
+
           PY
 
       - name: Save database to repository
