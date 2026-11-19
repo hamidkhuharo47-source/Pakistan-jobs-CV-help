@@ -10,7 +10,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Private",
-      "category_note": "Review recommended"
+      "category_note": "Employer identified"
     },
     {
       "title": "Commandant (Sohawa)",
@@ -22,7 +22,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Internal Auditor (Sohawa)",
@@ -34,7 +34,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Stock Controller - Liquid Cargoes (Sohawa)",
@@ -46,7 +46,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Demonstrator, Associate/Assistant Professors, Lecturer, Technicians, Lab Attendants, Assistant Registrar, Admin Coordinators, Computer Operators, System Support Engineers and others (Malir)",
@@ -57,8 +57,8 @@
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
       "status": "Active",
-      "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category": "Private",
+      "category_note": "Employer identified"
     },
     {
       "title": "Law Officer and Section Officer (Malir)",
@@ -70,7 +70,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Marketing/ Export Promotion Officer - Salt Business (Islamabad)",
@@ -82,7 +82,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Government",
-      "category_note": "Review recommended"
+      "category_note": "Employer identified"
     },
     {
       "title": "Associate (Electrical) (Islamabad)",
@@ -94,7 +94,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Government",
-      "category_note": "Review recommended"
+      "category_note": "Employer identified"
     },
     {
       "title": "Maintenance Lead/Sr. Associate (Islamabad)",
@@ -106,7 +106,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Government",
-      "category_note": "Review recommended"
+      "category_note": "Employer identified"
     },
     {
       "title": "Manager Finance (Peshawar)",
@@ -117,8 +117,8 @@
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
       "status": "Active",
-      "category": "Banking",
-      "category_note": "Review recommended"
+      "category": "Needs Verification",
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Head of Internal Audit (Islamabad)",
@@ -129,8 +129,8 @@
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
       "status": "Active",
-      "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category": "Government",
+      "category_note": "Employer identified"
     },
     {
       "title": "Internal Auditor (Karachi)",
@@ -142,7 +142,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Principal (Karachi)",
@@ -154,7 +154,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Assistant Manager - Water Supply (Islamabad)",
@@ -166,7 +166,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Senior HR Manager/Lead: Strategic HR and Assistant Manager / HR Generalist (Islamabad)",
@@ -178,7 +178,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Manager-Utility/ HOA Billing & Collections (Islamabad)",
@@ -190,7 +190,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Barrister-Legal Assistance & Liaison (Islamabad)",
@@ -202,7 +202,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Senior/Lead Civil Engineer - Housing & Urban Development (Islamabad)",
@@ -214,7 +214,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Executive Coordination & Special Matters Officer (Islamabad)",
@@ -226,7 +226,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Chief Executive Officer (CEO) (Islamabad)",
@@ -237,8 +237,8 @@
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
       "status": "Active",
-      "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category": "Government",
+      "category_note": "Employer identified"
     },
     {
       "title": "Chief Financial Officer (CFO) (Islamabad)",
@@ -249,8 +249,8 @@
       "last_seen": "2026-11-19",
       "review_after": "2026-12-19",
       "status": "Active",
-      "category": "Banking",
-      "category_note": "Review recommended"
+      "category": "Government",
+      "category_note": "Employer identified"
     },
     {
       "title": "Club Secretary (Karachi)",
@@ -262,7 +262,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Manager Electrical (Karachi)",
@@ -274,7 +274,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     },
     {
       "title": "Head Compliance (Islamabad)",
@@ -286,7 +286,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Banking",
-      "category_note": "Review recommended"
+      "category_note": "Employer identified"
     },
     {
       "title": "Accountant and Assistant Accountant (Islamabad)",
@@ -298,7 +298,7 @@
       "review_after": "2026-12-19",
       "status": "Active",
       "category": "Needs Verification",
-      "category_note": "Uncertain"
+      "category_note": "Employer not clearly identified"
     }
   ]
 }
