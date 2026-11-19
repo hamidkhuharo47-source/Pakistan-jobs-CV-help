@@ -1,0 +1,54 @@
+
+name: RSS Feed Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  rss-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Pakistan jobs RSS feed
+        run: |
+          curl -L --fail --silent --show-error \
+            "https://www.careermidway.com/rss/pakistan.xml" \
+            -o feed.xml
+
+      - name: Extract job information
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          import json
+
+          root = ET.parse("feed.xml").getroot()
+          jobs = []
+
+          for item in root.findall(".//item"):
+              jobs.append({
+                  "title": item.findtext("title", "").strip(),
+                  "link": item.findtext("link", "").strip(),
+                  "published": item.findtext("pubDate", "").strip(),
+                  "description": item.findtext("description", "").strip()
+              })
+
+          with open("test_jobs.json", "w", encoding="utf-8") as f:
+              json.dump(jobs, f, ensure_ascii=False, indent=2)
+
+          print(f"Extracted {len(jobs)} feed items")
+          PY
+
+      - name: Save test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss-test-results
+          path: |
+            feed.xml
+            test_jobs.json
+          retention-days: 7
+          
