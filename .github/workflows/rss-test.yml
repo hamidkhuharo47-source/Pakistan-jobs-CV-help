@@ -78,16 +78,32 @@ jobs:
                       "description": description
                   })
 
+          today = date.today()
+
           def classify(job):
               text = (
                   job["title"] + " " + job["description"]
               ).lower()
 
-              banking_terms = [
-                  "bank", "banking", "microfinance bank"
+              banking_employers = [
+                  "nrsp microfinance bank",
+                  "bank of punjab",
+                  "national bank of pakistan",
+                  "state bank of pakistan",
+                  "habib bank",
+                  "muslim commercial bank",
+                  "united bank limited",
+                  "allied bank",
+                  "meezan bank",
+                  "faysal bank",
+                  "askari bank",
+                  "bank alfalah",
+                  "soneri bank"
               ]
 
-              government_terms = [
+              government_employers = [
+                  "pakistan mineral development corporation",
+                  "islamabad club",
                   "government of pakistan",
                   "government of punjab",
                   "government of sindh",
@@ -97,29 +113,26 @@ jobs:
                   "federal government",
                   "provincial government",
                   "public service commission",
-                  "fpsc", "ppsc", "spsc", "kppsc",
-                  "government department"
+                  "fpsc", "ppsc", "spsc", "kppsc"
               ]
 
-              private_terms = [
-                  "private limited", "pvt. ltd",
-                  "pvt ltd", "limited company",
-                  "listed company", "oilfields limited",
-                  "private company"
+              private_employers = [
+                  "pakistan oilfields limited",
+                  "ftc management company",
+                  "malir university of science and technology",
+                  "malir medical college"
               ]
 
-              if any(term in text for term in banking_terms):
-                  return "Banking", "Review recommended"
+              if any(name in text for name in banking_employers):
+                  return "Banking", "Employer identified"
 
-              if any(term in text for term in government_terms):
-                  return "Government", "Review recommended"
+              if any(name in text for name in government_employers):
+                  return "Government", "Employer identified"
 
-              if any(term in text for term in private_terms):
-                  return "Private", "Review recommended"
+              if any(name in text for name in private_employers):
+                  return "Private", "Employer identified"
 
-              return "Needs Verification", "Uncertain"
-
-          today = date.today()
+              return "Needs Verification", "Employer not clearly identified"
 
           try:
               with open("jobs-database.json", encoding="utf-8") as f:
@@ -131,9 +144,9 @@ jobs:
               database = {"jobs": []}
 
           existing = {
-              job.get("link"): job
-              for job in database["jobs"]
-              if job.get("link")
+              record.get("link"): record
+              for record in database["jobs"]
+              if record.get("link")
           }
 
           added = 0
