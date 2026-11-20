@@ -237,49 +237,51 @@ jobs:
           
       - name: Generate website preview
         run: |
-         python - <<'PY'
-         import json
+          python - <<'PY'
+          import json
 
           with open("jobs-database.json", encoding="utf-8") as f:
               database = json.load(f)
 
-          def extract_company(title, description):
-              text = (title + " " + description).lower()
-              companies = [
-                  "nrsp microfinance bank",
-                  "pakistan oilfields limited",
-                  "national bank of pakistan",
-                  "state bank of pakistan",
-                  "malir university of science and technology",
-                  "malir medical college",
-                  "ftc management company"
-              ]
-              for company in companies:
-                  if company in text:
-                      return company.title()
-              return "Needs Verification"
+          companies = [
+              "NRSP Microfinance Bank",
+              "Pakistan Oilfields Limited",
+              "National Bank of Pakistan",
+              "State Bank of Pakistan",
+              "Malir University of Science and Technology",
+              "Malir Medical College",
+              "FTC Management Company"
+          ]
 
-          def extract_city(title, description):
-              text = (title + " " + description).lower()
-              cities = [
-                  "hyderabad", "karachi", "lahore", "islamabad",
-                  "rawalpindi", "peshawar", "quetta", "multan",
-                  "faisalabad", "sukkur"
-              ]
-              for city in cities:
-                  if city in text:
-                      return city.title()
-              return "Needs Verification"
+          cities = [
+              "Hyderabad", "Karachi", "Lahore", "Islamabad",
+              "Rawalpindi", "Peshawar", "Quetta", "Multan",
+              "Faisalabad", "Sukkur"
+          ]
 
           preview = []
 
           for job in database.get("jobs", []):
               title = job.get("title", "")
               description = job.get("description", "")
+              text = (title + " " + description).lower()
+
+              company = "Needs Verification"
+              for name in companies:
+                  if name.lower() in text:
+                      company = name
+                      break
+
+              city = "Needs Verification"
+              for name in cities:
+                  if name.lower() in text:
+                      city = name
+                      break
+
               preview.append({
                   "title": title,
-                  "company": extract_company(title, description),
-                  "city": extract_city(title, description),
+                  "company": company,
+                  "city": city,
                   "category": job.get("category", "Needs Verification"),
                   "status": job.get("status", "Unknown"),
                   "source": job.get("link", ""),
@@ -291,6 +293,7 @@ jobs:
 
           print("Website preview created:", len(preview), "jobs")
           PY
+         
           
 
       - name: Upload website preview
