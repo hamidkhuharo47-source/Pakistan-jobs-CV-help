@@ -232,6 +232,7 @@ jobs:
           path: |
             feed.xml
             test_jobs.json
+            website-preview.json
           retention-days: 7
           
       - name: Generate website preview
