@@ -261,3 +261,10 @@ jobs:
 
           print("Website preview created:", len(preview), "jobs")
           PY
+
+      - name: Upload website preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-preview
+          path: website-preview.json
+          retention-days: 7
