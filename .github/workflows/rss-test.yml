@@ -233,4 +233,29 @@ jobs:
             feed.xml
             test_jobs.json
           retention-days: 7
+
+      - name: Generate website preview
+        run: |
+          import json
+
+          with open("jobs-database.json", encoding="utf-8") as f:
+              database = json.load(f)
+
+          preview = []
+
+          for job in database.get("jobs", []):
+              preview.append({
+                  "title": job.get("title", ""),
+                  "company": "Not verified",
+                  "city": "Not specified",
+                  "category": job.get("category", "Needs Verification"),
+                  "type": job.get("status", "Unknown"),
+                  "source": job.get("link", ""),
+                  "description": job.get("description", "")
+              })
+
+          with open("website-preview.json", "w", encoding="utf-8") as f:
+              json.dump(preview, f, ensure_ascii=False, indent=2)
+
+          print("Website preview created:", len(preview), "jobs")
           
