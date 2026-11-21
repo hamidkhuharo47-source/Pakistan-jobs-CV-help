@@ -290,10 +290,10 @@ jobs:
 
           with open("website-preview.json", "w", encoding="utf-8") as f:
               json.dump(preview, f, ensure_ascii=False, indent=2)
-
+          
           print("Website preview created:", len(preview), "jobs")
           PY
-         
+          
           
 
       - name: Upload website preview
@@ -302,3 +302,8 @@ jobs:
           name: website-preview
           path: website-preview.json
           retention-days: 7
+                
+      - name: Run temporary review logic test
+        run: |
+          python review-logic-test.py
+          
