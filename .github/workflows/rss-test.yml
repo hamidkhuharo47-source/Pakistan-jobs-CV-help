@@ -303,4 +303,75 @@ jobs:
           path: website-preview.json
           retention-days: 7
 
+      - name: Check first 3 job links
+        run: |
+          python - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+
+          with open("jobs-database.json", encoding="utf-8") as f:
+              database = json.load(f)
+
+          results = []
+
+          for job in database.get("jobs", [])[:3]:
+              url = job.get("link", "").strip()
+              result = {
+                  "title": job.get("title", ""),
+                  "link": url,
+                  "status": "Check Failed",
+                  "http_code": None
+              }
+
+              if not url:
+                  result["status"] = "No Link"
+                  results.append(result)
+                  continue
+
+              request = Request(
+                  url,
+                  headers={"User-Agent": "Mozilla/5.0"}
+              )
+
+              try:
+                  with urlopen(request, timeout=10) as response:
+                      code = response.getcode()
+                      result["http_code"] = code
+
+                      if 200 <= code < 400:
+                          result["status"] = "Link OK"
+                      else:
+                          result["status"] = "HTTP Error"
+
+              except HTTPError as e:
+                  result["http_code"] = e.code
+
+                  if e.code in (403, 405, 429):
+                      result["status"] = "Blocked - Manual Check"
+                  elif e.code in (404, 410):
+                      result["status"] = "Broken Link"
+                  else:
+                      result["status"] = "HTTP Error"
+
+              except (URLError, TimeoutError, Exception) as e:
+                  result["status"] = "Check Failed"
+                  result["error"] = str(e)[:200]
+
+              results.append(result)
+              print(result["status"], "-", result["title"])
+
+          with open("link-check-results.json", "w", encoding="utf-8") as f:
+              json.dump(results, f, ensure_ascii=False, indent=2)
+
+          print("Links checked:", len(results))
+          PY
+
+      - name: Upload link check report
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: link-check-results.json
+          retention-days: 7
+
           
