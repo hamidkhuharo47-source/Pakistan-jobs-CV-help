@@ -303,10 +303,11 @@ jobs:
           path: website-preview.json
           retention-days: 7
 
-      - name: Check first 3 job links
+      - name: Check all job links
         run: |
           python - <<'PY'
           import json
+          import time
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError, URLError
 
@@ -315,7 +316,7 @@ jobs:
 
           results = []
 
-          for job in database.get("jobs", [])[:3]:
+          for job in database.get("jobs", []):
               url = job.get("link", "").strip()
               result = {
                   "title": job.get("title", ""),
@@ -359,6 +360,7 @@ jobs:
                   result["error"] = str(e)[:200]
 
               results.append(result)
+              time.sleep(2)
               print(result["status"], "-", result["title"])
 
           with open("link-check-results.json", "w", encoding="utf-8") as f:
