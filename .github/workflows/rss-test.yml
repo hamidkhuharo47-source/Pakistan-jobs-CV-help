@@ -179,17 +179,18 @@ jobs:
           needs_review = 0
 
           for record in database["jobs"]:
-              last_seen_text = record.get("last_seen") or record.get("first_seen")
+               last_seen_text = record.get("last_seen") or record.get("first_seen")
 
-          if last_seen_text:
-              last_seen = date.fromisoformat(last_seen_text)
+               if last_seen_text:
+                  last_seen = date.fromisoformat(last_seen_text)
 
-          if today - last_seen >= timedelta(days=30):
-              record["status"] = "Needs Review 
-          elif not record.get("status"):
-              record["status"] = "Unverified"
-          if record.get("status") == "Needs Review":
-          needs_review += 1
+                  if today - last_seen >= timedelta(days=30):
+                      record["status"] = "Needs Review"
+                  elif not record.get("status"):
+                      record["status"] = "Unverified"
+
+               if record.get("status") == "Needs Review":
+                   needs_review += 1
 
           with open("jobs-database.json", "w", encoding="utf-8") as f:
               json.dump(database, f, ensure_ascii=False, indent=2)
