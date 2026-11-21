@@ -302,8 +302,5 @@ jobs:
           name: website-preview
           path: website-preview.json
           retention-days: 7
-                
-      - name: Run temporary review logic test
-        run: |
-          python review-logic-test.py
+
           
