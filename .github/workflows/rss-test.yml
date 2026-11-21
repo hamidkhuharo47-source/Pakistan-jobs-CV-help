@@ -166,7 +166,7 @@ jobs:
                       "review_after": (
                           today + timedelta(days=30)
                       ).isoformat(),
-                      "status": "Active"
+                      "status": "Unverified"
                   }
                   database["jobs"].append(record)
                   existing[link] = record
