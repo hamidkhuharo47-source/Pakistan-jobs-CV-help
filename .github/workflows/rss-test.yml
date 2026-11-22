@@ -150,6 +150,8 @@ jobs:
           }
 
           added = 0
+          new_jobs = []
+          
 
           for job in jobs:
               category, category_note = classify(job)
@@ -171,6 +173,7 @@ jobs:
                   database["jobs"].append(record)
                   existing[link] = record
                   added += 1
+                  new_jobs.append(record)
 
               record["category"] = category
               record["category_note"] = category_note
@@ -192,8 +195,8 @@ jobs:
                if record.get("status") == "Needs Review":
                    needs_review += 1
 
-          with open("jobs-database.json", "w", encoding="utf-8") as f:
-              json.dump(database, f, ensure_ascii=False, indent=2)
+          with open("new-jobs-report.json", "w", encoding="utf-8") as f:
+              json.dump(new_jobs, f, ensure_ascii=False, indent=2)
 
           with open("test_jobs.json", "w", encoding="utf-8") as f:
               json.dump(jobs, f, ensure_ascii=False, indent=2)
@@ -233,6 +236,7 @@ jobs:
             feed.xml
             test_jobs.json
             website-preview.json
+            new-jobs-report.json
           retention-days: 7
           
       - name: Generate website preview
