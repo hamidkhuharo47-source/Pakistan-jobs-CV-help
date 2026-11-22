@@ -66,7 +66,11 @@ document.addEventListener("DOMContentLoaded",()=>{
       JOBS = (Array.isArray(database.jobs) ? database.jobs : [])
         .filter(j => j.status !== "Needs Review" && j.status !== "Expired");
 
-      render(JOBS);
+      const initialCategory = document.getElementById("filter-category").value.toLowerCase();
+
+render(JOBS.filter(j =>
+  !initialCategory || (j.category || "").toLowerCase() === initialCategory
+));
     })
     .catch(() => {
       results.innerHTML =
