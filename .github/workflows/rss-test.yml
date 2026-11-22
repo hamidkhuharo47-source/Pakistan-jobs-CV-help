@@ -87,6 +87,8 @@ jobs:
 
               banking_employers = [
                   "nrsp microfinance bank",
+                  "bok currency exchange company",
+                  "bank of khyber",
                   "bank of punjab",
                   "national bank of pakistan",
                   "state bank of pakistan",
@@ -104,6 +106,7 @@ jobs:
               government_employers = [
                   "pakistan mineral development corporation",
                   "islamabad club",
+                  "public school gadap",
                   "government of pakistan",
                   "government of punjab",
                   "government of sindh",
@@ -133,6 +136,8 @@ jobs:
                   return "Private", "Employer identified"
 
               return "Needs Verification", "Employer not clearly identified"
+
+          
 
           try:
               with open("jobs-database.json", encoding="utf-8") as f:
