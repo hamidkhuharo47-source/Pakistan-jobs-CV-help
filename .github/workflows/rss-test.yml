@@ -364,15 +364,23 @@ jobs:
               results.append(result)
               time.sleep(2)
               print(result["status"], "-", result["title"])
+          status_summary = {}
+          for result in results:
+              status = result.get("status", "Unknown")
+              status_summary[status] = status_summary.get(status, 0) + 1
+          
           with open("link-check-results.json", "w", encoding="utf-8") as f:
               json.dump({
                   "checked_at": checked_at,
                   "total_checked": len(results),
+                  "status_summary": status_summary,
                   "results": results
               }, f, ensure_ascii=False, indent=2)
-               
+
           print("Links checked:", len(results))
+          print("Status summary:", status_summary)
           PY
+  
 
       - name: Upload link check report
         uses: actions/upload-artifact@v4
