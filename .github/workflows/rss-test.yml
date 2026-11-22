@@ -316,6 +316,8 @@ jobs:
 
           results = []
 
+          checked_at = time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())
+
           for job in database.get("jobs", []):
               url = job.get("link", "").strip()
               result = {
@@ -363,11 +365,15 @@ jobs:
               time.sleep(2)
               print(result["status"], "-", result["title"])
 
-          with open("link-check-results.json", "w", encoding="utf-8") as f:
-              json.dump(results, f, ensure_ascii=False, indent=2)
+            with open("link-check-results.json", "w", encoding="utf-8") as f:
+              json.dump({
+                  "checked_at": checked_at,
+                  "total_checked": len(results),
+                  "results": results
+              }, f, ensure_ascii=False, indent=2)
 
-          print("Links checked:", len(results))
-          PY
+            print("Links checked:", len(results))
+            PY
 
       - name: Upload link check report
         uses: actions/upload-artifact@v4
