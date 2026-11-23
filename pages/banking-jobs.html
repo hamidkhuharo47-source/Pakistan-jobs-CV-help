@@ -39,57 +39,35 @@
 
 <main class="wrap" style="padding:35px 0">
 <article class="content">
+<h2>Current Banking Job Opportunities</h2>
 
-<h2>Current Banking Vacancies — November 2026</h2>
-<p><b>Last checked:</b> 14 November 2026</p>
+<p>Banking vacancies collected automatically from our job database. Listings are unverified; please check the original source before applying.</p>
 
-<div class="notice">
-<b>Important:</b> Check the official advertisement for complete qualifications, experience, age limits and application instructions before applying. Vacancies may close early or change.
-</div>
+<p><b>Last checked:</b> Updated automatically when the job database refreshes.</p>
 
-<h3>1. Network Operation Center (NOC) Engineer — State Bank of Pakistan</h3>
-<p><b>Location:</b> Karachi</p>
-<p><b>Closing date:</b> 16 November 2026</p>
-<p><b>Role:</b> IT infrastructure monitoring, network troubleshooting, VPN support and first-level technical support.</p>
-<p><b>Suitable candidates:</b> Applicants with relevant IT infrastructure, networking and technical support experience. Check the official advertisement for full eligibility.</p>
-<p><a href="https://www.sbp.org.pk/careers/information-technology-operations-department-on-contract-nov-2026" target="_blank" rel="noopener">View details and apply through SBP</a></p>
+<form class="search-panel" id="job-filter-form">
+  <div class="search-grid">
+    <label>Job title or keyword
+      <input id="filter-title" type="search" placeholder="e.g. officer, teller, analyst">
+    </label>
 
-<h3>2. Cyber Operations & Response / Senior Cyber Operations Analyst (OG-3) — State Bank of Pakistan</h3>
-<p><b>Location:</b> Karachi</p>
-<p><b>Closing date:</b> 16 November 2026</p>
-<p><b>Grade:</b> OG-3</p>
-<p><b>Role:</b> Cybersecurity monitoring, threat analysis, incident response and security operations.</p>
-<p><b>Suitable candidates:</b> Experienced cybersecurity professionals. Review the official advertisement for the required qualifications and experience.</p>
-<p><a href="https://www.sbp.org.pk/careers/cyber-security-department-2026" target="_blank" rel="noopener">View details and apply through SBP</a></p>
+    <label>Location keyword
+      <input id="filter-location" type="search" placeholder="e.g. Karachi, Islamabad">
+    </label>
 
-<h3>3. Trainee Officers Batch 2026 — Allied Bank</h3>
-<p><b>Location:</b> Pakistan</p>
-<p><b>Closing date:</b> 15 November 2026</p>
-<p><b>Qualification:</b> MBA, MBIT, M.Com, relevant Master's degree in Banking, Finance or Business, or four-year BBA Honours from an HEC-recognized university.</p>
-<p><b>Minimum academic requirement:</b> CGPA 3.00 or 80% marks in the final transcript.</p>
-<p><b>Age limit:</b> Maximum 27 years as of 30 November 2026.</p>
-<p><b>Experience:</b> Not essential; may be preferred.</p>
-<p><a href="https://www.abl.com/careers" target="_blank" rel="noopener">View details and apply on Allied Bank's official careers page</a></p>
+    <input id="filter-category" type="hidden" value="Banking">
 
-<h3>4. Customer Services Officer — The Bank of Punjab</h3>
-<p><b>Location:</b> Pan Pakistan</p>
-<p><b>Closing date:</b> 20 November 2026</p>
-<p><b>Grade:</b> Band-13 to Band-10</p>
-<p><b>Role:</b> Customer service position in the Consumer Banking Group, Branch Banking Division.</p>
-<p><b>Eligibility:</b> Check the official vacancy details for educational qualifications, experience and other requirements.</p>
-<p><a href="https://www.bop.com.pk/Available-Jobs" target="_blank" rel="noopener">View details and apply on BOP's official careers page</a></p>
+    <div class="search-actions">
+      <button class="btn btn-primary" type="submit">Search</button>
+      <button class="btn btn-outline" type="reset">Clear</button>
+    </div>
+  </div>
+</form>
 
-<h3>5. Customer Experience Officer — Zarai Taraqiati Bank Limited (ZTBL)</h3>
-<p><b>Location:</b> Check the official advertisement for posting details.</p>
-<p><b>Grade:</b> OG-II</p>
-<p><b>Closing date:</b> 22 November 2026</p>
-<p><b>Role:</b> Customer experience and service-related banking position.</p>
+<p class="result-count" id="result-count" aria-live="polite"></p>
 
-<p><b>Qualification:</b> Minimum Bachelor's degree from an HEC-recognized institute or university.</p>
-<p><b>Experience:</b> Minimum 3 years of relevant experience.</p>
-<p><b>Age limit:</b> Maximum 35 years for OG-II positions, as of the closing date.</p>
-  
-<p><a href="https://ztbl.com.pk/jobs/" target="_blank" rel="noopener">View details and apply on ZTBL's official jobs page</a></p>
+<div class="job-grid" id="job-results"></div>
+
 
 <div class="notice">
 <b>Job safety reminder:</b> Apply only through official bank websites and recruitment portals. Never pay an individual or agent to secure a banking job.
